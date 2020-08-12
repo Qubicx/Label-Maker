@@ -27,9 +27,9 @@ function digit(x, number, rightSide) {
     x = bar(x, (pattern & mask[i]) == mask[i]);
   }
   fill(255);
-  rect(x,barHeight + barTop,-7*barWidth,-barWidth*8)
+  rect(x,barHeight + barTop,-7*barWidth,-barWidth*8);
   fill(0);
-  textSize(barWidth*8)
+  textSize(barWidth*8);
   textAlign(CENTER, BOTTOM);
   text(number, x-3.5*barWidth, barHeight + barTop);
   return x;
