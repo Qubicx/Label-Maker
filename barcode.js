@@ -6,19 +6,19 @@ function barcode(x, code) {
   quietZone(x - 9 * barWidth);
   x = guard(x);
   for (let i = 0; i < 6; i++) {
-    x = digit(x, digits[i], false);
+    x = digit(x, digits[i], false); //draw left digits
   }
   x = bar(x, false);
   x = guard(x);
   x = bar(x, false);
   for (let i = 6; i < 12; i++) {
-    x = digit(x, digits[i], true);
+    x = digit(x, digits[i], true); //draw right digits
   }
   x = guard(x);
   quietZone(x);
 }
 
-function digit(x, number, rightSide) {
+function digit(x, number, rightSide) { //creates a single digit starting at x
   let pattern = encoding[number];
   if (rightSide) {
     pattern = pattern ^ 127; //if it is on the right side, invert the pattern
@@ -27,15 +27,15 @@ function digit(x, number, rightSide) {
     x = bar(x, (pattern & mask[i]) == mask[i]);
   }
   fill(255);
-  rect(x,barHeight + barTop,-7*barWidth,-barWidth*8);
+  rect(x,barHeight + barTop,-7*barWidth,-barWidth*8); //add white space for text
   fill(0);
   textSize(barWidth*8);
   textAlign(CENTER, BOTTOM);
-  text(number, x-3.5*barWidth, barHeight + barTop);
-  return x;
+  text(number, x-3.5*barWidth, barHeight + barTop); //add numbers undereath the digits
+  return x; //return x value for next digit
 }
 
-function bar(x, black) {
+function bar(x, black) { //creates a single bar starting at x
   noStroke();
   if (black) {
     fill(0);
@@ -43,7 +43,7 @@ function bar(x, black) {
     fill(255);
   }
   rect(x, barTop, barWidth, barHeight);
-  return x + barWidth;
+  return x + barWidth; //return x value for next bar
 }
 
 function guard(x) {
@@ -53,14 +53,14 @@ function guard(x) {
   return x;
 }
 
-function quietZone(x) {
+function quietZone(x) { //create a 9 bar wide quiet zone
   for (let i = 0; i < 9; i++) {
     bar(x + i * barWidth);
   }
   return x;
 }
 
-function checkDigit(code) {
+function checkDigit(code) { //generates a UPC-A check digit
   digits = toArray(code);
   let even = 0;
   let odd = 0;
@@ -76,7 +76,7 @@ function checkDigit(code) {
   return check;
 }
 
-function toArray(input) {
+function toArray(input) { //formats an input into an array of digits cast as strings
   if (typeof input == "string") {
     return str(input).split("");
   } else {
