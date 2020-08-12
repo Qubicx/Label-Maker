@@ -60,6 +60,15 @@ function quietZone(x) { //create a 9 bar wide quiet zone
   }
   return x;
 }
+function pluCode(price) {
+  let digits = toArray("2107074");
+  let priceDigits = str(nf(floor(min(price,99.99)*100),4));
+  for (let i = 0; i < 4; i++) {
+    digits.push(priceDigits[i])
+  }
+  digits.push(str(checkDigit(digits)));
+  return digits;
+}
 
 function checkDigit(code) { //generates a UPC-A check digit
   digits = toArray(code);
@@ -67,9 +76,9 @@ function checkDigit(code) { //generates a UPC-A check digit
   let odd = 0;
   for (let i = 0; i < digits.length; i++) {
     if (i % 2) {
-      odd += digits[i];
+      odd += Number(digits[i]);
     } else {
-      even += digits[i];
+      even += Number(digits[i]);
     }
   }
   sum = even + odd * 3;
