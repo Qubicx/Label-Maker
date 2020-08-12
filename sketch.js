@@ -1,7 +1,14 @@
+let barWidth = 4;
+let barTop = 100;
+let barHeight = 200;
+
+
 function setup() {
-  // put setup code here
+  createCanvas(500, 400);
 }
 
 function draw() {
-  // put drawing code here
+  background(220);
+  barcode(50,"048107193430");
+  noLoop();
 }
