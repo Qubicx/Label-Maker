@@ -19,30 +19,31 @@ function barcode(x, code) {
 }
 
 function digit(x, number, rightSide) { //creates a single digit starting at x
+  let numberSize = barWidth*8
   let pattern = encoding[number];
   if (rightSide) {
     pattern = pattern ^ 127; //if it is on the right side, invert the pattern
   }
   for (i = 0; i < 7; i++) {
-    x = bar(x, (pattern & mask[i]) == mask[i]);
+    x = bar(x, (pattern & mask[i]) == mask[i], barcodeHeight-numberSize);
   }
   fill(255);
-  rect(x,barHeight + barTop,-7*barWidth,-barWidth*8); //add white space for text
+  rect(x,barcodeHeight + barcodeTop,-7*barWidth,-numberSize); //add white space for text
   fill(0);
-  textSize(barWidth*8);
+  textSize(numberSize);
   textAlign(CENTER, BOTTOM);
-  text(number, x-3.5*barWidth, barHeight + barTop); //add numbers undereath the digits
+  text(number, x-3.5*barWidth, barcodeHeight + barcodeTop); //add numbers undereath the digits
   return x; //return x value for next digit
 }
 
-function bar(x, black) { //creates a single bar starting at x
+function bar(x, black, barHeight = barcodeHeight) { //creates a single bar starting at x
   noStroke();
   if (black) {
     fill(0);
   } else {
     fill(255);
   }
-  rect(x, barTop, barWidth, barHeight);
+  rect(x, barcodeTop, barWidth, barHeight);
   return x + barWidth; //return x value for next bar
 }
 

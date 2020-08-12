@@ -1,6 +1,6 @@
-let barWidth = 4;
-let barTop = 100;
-let barHeight = 200;
+let barWidth = 1;
+let barcodeTop = 20;
+let barcodeHeight = 50;
 
 
 function setup() {
