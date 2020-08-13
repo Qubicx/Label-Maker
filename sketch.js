@@ -32,7 +32,7 @@ function draw() {
   textStyle(BOLD);
   textSize(nameSize);
   fill(0);
-  text(name, 10, 5, labelWidth - 20, 65);
+  text(name, 10, 0, labelWidth - 20, 65);
   textAlign(LEFT, CENTER);
   textSize(24);
   text("$" + nf(price, 0, 2), 10, 90)
