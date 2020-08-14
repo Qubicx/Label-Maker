@@ -9,6 +9,7 @@ let barcodeTop = 70;
 let barcodeHeight = 40;
 
 function setup() {
+  pixelDensity(1);
   scaleFactor = floor(windowWidth / labelWidth / 1.5);
   createCanvas(labelWidth * scaleFactor, labelHeight * scaleFactor);
   nameInput = createInput("Item Name");
