@@ -36,7 +36,7 @@ function draw() {
   text(name, 10, 0, labelWidth - 20, 65);
   textAlign(LEFT, CENTER);
   textSize(24);
-  text("$" + nf(price, 0, 2), 10, 90)
+  text("$" + nf(price, 0, 2), 10, 90);
   barcode(100, pluCode(price));
 }
 
@@ -46,5 +46,5 @@ function finalize() {
   scaleFactor = 1;
   redraw();
   removeElements();
-  window.print()
+  window.print();
 }
