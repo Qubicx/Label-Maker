@@ -81,7 +81,7 @@ function checkDigit(code) { //generates a UPC-A check digit
       even += Number(digits[i]);
     }
   }
-  sum = even + odd * 3;
+  sum = odd + even * 3;
   check = (10 - (sum % 10)) % 10;
   return check;
 }
